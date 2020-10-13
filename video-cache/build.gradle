@@ -1,0 +1,25 @@
+apply plugin: 'com.android.library'
+def APP_VERSION_CODE = Integer.parseInt(
+        'git rev-list HEAD --count'.execute([], project.rootDir).text.trim())
+
+android {
+    compileSdkVersion 22
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 22
+
+        versionCode APP_VERSION_CODE
+        versionName "1.0.0"
+    }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

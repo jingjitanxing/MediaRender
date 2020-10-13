@@ -1,0 +1,32 @@
+include ':app', ':mailsender', ':video-cache', ':IjkLib'
+
+def initSignatureInfo() {
+    gradle.ext.keyAlias = ""
+    gradle.ext.keyPassword = ""
+    gradle.ext.storePassword = ""
+    File signFile = null
+    if (IS_JENKINS == "true") {
+        gradle.ext.storeFile = "/Library/KeyStore"
+        signFile = new File("/Library/KeyStore/keystore.properties")
+    } else {
+        gradle.ext.storeFile = ""
+        signFile = new File("keystore.properties")
+        println("init keystore : " + signFile.exists())
+    }
+    if (signFile.exists()) {
+        Properties p = new Properties()
+        signFile.withInputStream { stream ->
+            p.load(stream)
+        }
+        gradle.ext.keyAlias = p.keyAlias
+        gradle.ext.keyPassword = p.keyPassword
+        gradle.ext.storeFile = p.storeFile
+        gradle.ext.storePassword = p.storePassword
+    }
+}
+def initEnvironment() {
+    gradle.ext.outDir = rootProject.getProjectDir().getAbsolutePath() + "/output"
+}
+
+initEnvironment()
+initSignatureInfo()
