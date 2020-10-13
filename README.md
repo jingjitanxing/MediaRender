@@ -7,9 +7,9 @@
 3. collect crash by Tencent bugly
 4. test it on android 7 box well
 
-# HOWTO
+# HowTo
 Open this app using android studio and enjoy it.
 
-# TODO
-Open source about PC DLNA controler.
+# ToDo
+Open source code about PC DLNA controler.
 
