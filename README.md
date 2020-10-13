@@ -1,10 +1,15 @@
 # MediaRender
 
-功能介绍：
+# Introduction：
+
 1. android DLNA media render
-2. 基于Platinum接收控制命令，使用google exoplayer播放。也可以选择使用ijkplayer或者media player来进行播放, 代码中可以选择。
-3. 使用腾讯bugly进行crash收集
+2. receive control command based on Platinum, ijkplayer or media player can be choosed by you, but you must change it in codes.
+3. collect crash by Tencent bugly
+4. test it on android 7 box well
 
+# HOWTO
+Open this app using android studio and enjoy it.
 
-ToDo:
-1. 开源pc端 dlna control
+# TODO
+Open source about PC DLNA controler.
+
