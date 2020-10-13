@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+  compileSdkVersion 29
+  buildToolsVersion "29.0.3"
+
+  defaultConfig {
+    applicationId "com.geniusgithub.mediarender"
+    minSdkVersion 16
+    targetSdkVersion 29
+    versionCode 3
+    versionName "3.0"
+
+
+    ndk {
+      // abiFilters 'armeabi-v7a', 'arm64-v8a'
+
+      abiFilters 'armeabi-v7a'
+
+      //abiFilters  'armeabi-v7a', 'arm64-v8a'
+      //abiFilters 'x86', 'x86_64', 'armeabi'
+    }
+  }
+
+  signingConfigs {
+    //签名的配置
+    release {
+      println("gradle.keyAlias:" + gradle.keyAlias)
+      if (gradle.keyAlias != "") {
+        keyAlias gradle.keyAlias
+        keyPassword gradle.keyPassword
+        storeFile file(gradle.storeFile)
+        storePassword gradle.storePassword
+      }
+    }
+    debug {
+      if (gradle.keyAlias != "") {
+        keyAlias gradle.keyAlias
+        keyPassword gradle.keyPassword
+        storeFile file(gradle.storeFile)
+        storePassword gradle.storePassword
+      }
+    }
+  }
+
+  buildTypes {
+    release {
+      lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+      }
+      minifyEnabled true
+      zipAlignEnabled true
+      shrinkResources true
+      signingConfig signingConfigs.release //打包命令行：./gradlew assembleRelease
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+    debug {
+      crunchPngs false //关闭crunchPng优化, 以加快构建
+      minifyEnabled false
+      signingConfig signingConfigs.debug //打包命令行：./gradlew assembleDebug
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  applicationVariants.all { variant ->
+    if ("true" == IS_JENKINS) {
+      variant.getPackageApplication().outputDirectory = new File(gradle.outDir)
+    }
+    variant.outputs.all {
+      outputFileName =
+          "MideaRender_install_${variant.versionCode}.apk"
+    }
+  }
+
+  compileOptions {
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  //aar
+  repositories {
+    flatDir {
+      dirs '../libs'
+    }
+  }
+
+}
+
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation 'com.tencent.mars:mars-xlog:1.2.3'
+  implementation project(':mailsender')
+  implementation project(':video-cache')
+  implementation project(':IjkLib')
+  implementation 'com.google.android.exoplayer:exoplayer:2.11.5'
+  implementation 'com.google.android.exoplayer:exoplayer-ui:2.11.5'
+
+  implementation("com.tencent.bugly:crashreport:${BUGLY_VERSION}") { changing = true }
+  implementation("com.tencent.bugly:nativecrashreport:${BUGLY_NDK_VERSION}") { changing = true }
+//  implementation 'com.android.support:appcompat-v7:22.2.1'
+  implementation 'androidx.appcompat:appcompat:1.1.0'
+//  implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}

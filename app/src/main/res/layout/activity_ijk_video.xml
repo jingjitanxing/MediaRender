@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".video.IjkVideoActivity">
+
+  <RelativeLayout
+    android:id="@+id/ijk_audio_player"
+    android:layout_width="match_parent"
+    android:background="@drawable/media_bacground"
+    android:layout_height="match_parent">
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center">
+
+      <com.geniusgithub.mediarender.music.lrc.LyricView
+        android:id="@+id/lrc_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"
+        android:layout_gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+      android:id="@+id/song_info_view"
+      android:layout_width="fill_parent"
+      android:layout_centerInParent="true"
+      android:layout_marginBottom="50dp"
+      android:layout_height="wrap_content"
+      android:gravity="center">
+
+      <ImageView
+        android:id="@+id/iv_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerInside"
+        android:src="@drawable/mp_music_default" />
+
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:orientation="vertical">
+        <TextView
+          android:id="@+id/tv_title"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@android:color/white"
+          android:textSize="30sp"/>
+        <TextView
+          android:id="@+id/tv_album"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@android:color/white"
+          android:textSize="18sp"/>
+        <TextView
+          android:id="@+id/tv_artist"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@android:color/white"
+          android:textSize="18sp"/>
+      </LinearLayout>
+
+    </LinearLayout>
+
+    <com.geniusgithub.mediarender.music.VisualizerView
+      android:id="@+id/mp_freq_view"
+      android:layout_width="fill_parent"
+      android:layout_height="50dp"
+      android:layout_below="@id/song_info_view"
+      android:layout_marginLeft="100dp"
+      android:layout_marginRight="100dp" />
+  </RelativeLayout>
+
+  <tv.danmaku.ijk.media.widget.media.IjkVideoView
+    android:id="@+id/ijk_video_player"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" />
+
+
+
+  <include
+    android:id="@+id/ijk_player_buffer"
+    layout="@layout/media_prepare_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true" />
+
+</RelativeLayout>

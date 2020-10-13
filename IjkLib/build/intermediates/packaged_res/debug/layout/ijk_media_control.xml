@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/iv_background"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true" />
+
+    <RelativeLayout
+        android:id="@+id/rll_options"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:paddingTop="4dip"
+        android:layout_above="@+id/ijkLib__relativeLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/mediacontroller_play_pause"
+            style="@android:style/MediaButton.Play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#00000000" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/ijkLib__relativeLayout">
+
+        <TextView
+            android:id="@+id/mediacontroller_time_current"
+            style="@style/MediaController_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="4dip"
+            android:paddingRight="4dip" />
+
+
+        <SeekBar
+            android:id="@+id/mediacontroller_seekbar"
+            style="@style/MediaController_SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/mediacontroller_time_total"
+            android:layout_toRightOf="@+id/mediacontroller_time_current"
+            android:focusable="true"
+            android:max="1000"
+            android:thumb="@drawable/live_room_seek_bar_point" />
+
+
+        <TextView
+            android:id="@+id/mediacontroller_time_total"
+            style="@style/MediaController_Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="4dip"
+            android:paddingRight="4dip" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/faster"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="350.0dip"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="faster"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/slower"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="400.0dip"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="slower"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/normal"
+        android:layout_width="32dip"
+        android:layout_height="32dip"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="440.0dip"
+        android:background="#00000000"
+        android:gravity="center"
+        android:text="normal"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

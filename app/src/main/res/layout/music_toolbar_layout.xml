@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/media_bacground">
+
+  <RelativeLayout
+    android:id="@+id/down_toolview"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:layout_alignParentBottom="true"
+    android:background="@drawable/media_tool_bg1">
+
+    <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true">
+
+      <ImageButton
+        android:id="@+id/btn_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_btn_play"></ImageButton>
+
+      <ImageButton
+        android:id="@+id/btn_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_btn_pause"
+        android:visibility="gone"></ImageButton>
+
+      <TextView
+        android:id="@+id/tv_totalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="10dp"
+        android:text="@string/init_time"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"></TextView>
+
+      <TextView
+        android:id="@+id/tv_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/tv_totalTime"
+        android:text="@string/separate"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"></TextView>
+
+      <TextView
+        android:id="@+id/tv_curTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/tv_line"
+        android:text="@string/init_time"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"></TextView>
+
+
+      <SeekBar
+        android:id="@+id/playback_seeker"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/tv_curTime"
+        android:max="100"
+        android:maxHeight="55.0dip"
+        android:minHeight="55.0dip"
+        android:paddingLeft="15.0dip"
+        android:paddingRight="15.0dip"
+        android:progressDrawable="@drawable/seekbar_background"
+        android:thumb="@drawable/seekbar_thumb"
+        android:thumbOffset="15dp" />
+
+    </RelativeLayout>
+
+  </RelativeLayout>
+
+
+  <com.geniusgithub.mediarender.music.VisualizerView
+    android:id="@+id/mp_freq_view"
+    android:layout_width="fill_parent"
+    android:layout_height="50dip"
+    android:layout_above="@id/down_toolview"
+    android:layout_gravity="center_horizontal|bottom"
+    android:layout_marginLeft="100dp"
+    android:layout_marginRight="100dp" />
+
+
+  <LinearLayout
+    android:id="@+id/song_info_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@id/down_toolview"
+    android:gravity="center">
+
+    <ImageView
+      android:id="@+id/iv_album"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:scaleType="centerInside"
+      android:src="@drawable/mp_music_default" />
+
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="match_parent"
+      android:layout_marginLeft="20dp"
+      android:orientation="vertical">
+
+
+      <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"/>
+
+      <TextView
+        android:id="@+id/tv_album"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
+
+      <TextView
+        android:id="@+id/tv_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
+
+    </LinearLayout>
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@id/down_toolview"
+    android:gravity="center">
+
+    <com.geniusgithub.mediarender.music.lrc.LyricView
+      android:id="@+id/lrc_view"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_gravity="center" />
+
+  </LinearLayout>
+
+
+</RelativeLayout>
